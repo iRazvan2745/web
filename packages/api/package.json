@@ -1,0 +1,28 @@
+{
+  "name": "@irazz.lol/api",
+  "type": "module",
+  "exports": {
+    ".": {
+      "default": "./src/index.ts"
+    },
+    "./*": {
+      "default": "./src/*.ts"
+    }
+  },
+  "scripts": {},
+  "dependencies": {
+    "@irazz.lol/auth": "workspace:*",
+    "@irazz.lol/db": "workspace:*",
+    "@irazz.lol/env": "workspace:*",
+    "@orpc/client": "catalog:",
+    "@orpc/openapi": "catalog:",
+    "@orpc/server": "catalog:",
+    "@orpc/zod": "catalog:",
+    "dotenv": "catalog:",
+    "zod": "catalog:"
+  },
+  "devDependencies": {
+    "@irazz.lol/config": "workspace:*",
+    "typescript": "^5"
+  }
+}
