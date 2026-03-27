@@ -18,10 +18,19 @@ export const stripeCatalogRouter = {
         }
 
         if (typeof price.product === "string") {
-          return true;
+          return false;
         }
 
-        return !price.product.deleted && price.product.active;
+        if (price.product.deleted || !price.product.active) {
+          return false;
+        }
+
+        // Uncomment this check again if the catalog needs to be user-scoped later.
+        // return (
+        //   price.product.metadata["irazz.lol"] === "true" &&
+        //   price.product.metadata.assigned_user === context.session.user.id
+        // );
+        return price.product.metadata["irazz.lol"] === "true";
       })
       .map((price) => ({
         priceId: price.id,

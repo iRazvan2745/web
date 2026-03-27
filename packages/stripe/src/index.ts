@@ -2,7 +2,7 @@ import { env } from "@irazz.lol/env/server";
 import Stripe from "stripe";
 
 export const stripe = new Stripe(env.STRIPE_SECRET_KEY, {
-  apiVersion: "2026-03-25.preview"
+  apiVersion: "2026-03-25.dahlia"
 });
 
 export class StripeWebhookError extends Error {
