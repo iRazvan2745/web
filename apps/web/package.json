@@ -5,7 +5,10 @@
   "scripts": {
     "build": "vite build",
     "serve": "vite preview",
-    "dev": "vite dev"
+    "dev": "vite dev",
+    "deploy": "wrangler deploy",
+    "preview": "wrangler dev",
+    "cf-typegen": "wrangler types"
   },
   "dependencies": {
     "@base-ui/react": "^1.3.0",
@@ -49,6 +52,7 @@
     "jsdom": "^26.0.0",
     "typescript": "^5",
     "vite": "^7.0.2",
-    "web-vitals": "^5.0.3"
+    "web-vitals": "^5.0.3",
+    "wrangler": "^4.77.0"
   }
 }
