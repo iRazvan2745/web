@@ -1,5 +1,5 @@
 {
-  "name": "@irazz.lol/auth",
+  "name": "@irazz.lol/stripe",
   "type": "module",
   "exports": {
     ".": {
@@ -11,16 +11,14 @@
   },
   "scripts": {},
   "dependencies": {
-    "@irazz.lol/db": "workspace:*",
     "@irazz.lol/env": "workspace:*",
-    "@irazz.lol/stripe": "workspace:*",
-    "better-auth": "catalog:",
-    "dotenv": "catalog:",
+    "dotenv": "^17.3.1",
     "drizzle-orm": "^0.45.1",
-    "zod": "catalog:"
+    "stripe": "^21.0.1",
+    "zod": "^4.3.6"
   },
   "devDependencies": {
     "@irazz.lol/config": "workspace:*",
-    "typescript": "^5"
+    "typescript": "^5.9.3"
   }
 }

@@ -8,6 +8,7 @@
     ],
     "catalog": {
       "dotenv": "^17.2.2",
+      "stripe": "21.1.0-beta.2",
       "zod": "^4.1.13",
       "@types/node": "^22.13.14",
       "lucide-react": "^0.546.0",
@@ -31,6 +32,7 @@
     "build": "turbo build",
     "check-types": "turbo check-types",
     "dev:web": "turbo -F web dev",
+    "stripe": "stripe listen --forward-to localhost:3001/api/stripe/webhook",
     "db:push": "turbo -F @irazz.lol/db db:push",
     "db:studio": "turbo -F @irazz.lol/db db:studio",
     "db:generate": "turbo -F @irazz.lol/db db:generate",
@@ -43,19 +45,19 @@
   },
   "dependencies": {
     "@irazz.lol/env": "workspace:*",
-    "dotenv": "catalog:",
+    "dotenv": "^17.3.1",
     "lenis": "^1.3.21",
     "lucide-react": "^1.7.0",
     "motion": "^12.38.0",
-    "zod": "catalog:"
+    "zod": "^4.3.6"
   },
   "devDependencies": {
     "@irazz.lol/config": "workspace:*",
-    "@types/node": "catalog:",
+    "@types/node": "^22.19.15",
     "oxfmt": "^0.26.0",
-    "oxlint": "^1.41.0",
-    "turbo": "^2.8.12",
-    "typescript": "^5"
+    "oxlint": "^1.57.0",
+    "turbo": "^2.8.20",
+    "typescript": "^5.9.3"
   },
   "packageManager": "bun@1.3.5"
 }

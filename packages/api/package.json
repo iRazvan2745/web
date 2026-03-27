@@ -14,6 +14,7 @@
     "@irazz.lol/auth": "workspace:*",
     "@irazz.lol/db": "workspace:*",
     "@irazz.lol/env": "workspace:*",
+    "@irazz.lol/stripe": "workspace:*",
     "@orpc/client": "catalog:",
     "@orpc/openapi": "catalog:",
     "@orpc/server": "catalog:",

@@ -12,6 +12,7 @@
     "@irazz.lol/api": "workspace:*",
     "@irazz.lol/auth": "workspace:*",
     "@irazz.lol/env": "workspace:*",
+    "@irazz.lol/stripe": "workspace:*",
     "@irazz.lol/ui": "workspace:*",
     "@orpc/client": "catalog:",
     "@orpc/openapi": "catalog:",

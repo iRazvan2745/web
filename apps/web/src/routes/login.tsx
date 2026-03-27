@@ -13,10 +13,12 @@ function RouteComponent() {
 
   return (
     <div className="flex items-center">
-      <div className="md:border-r h-full items-center justify-center flex md:w-120 mx-auto">
-        {showSignIn ? <SignInForm onSwitchToSignUp={() => setShowSignIn(false)} /> : <SignUpForm onSwitchToSignIn={() => setShowSignIn(true)} />}
+      <div className="lg:border-r h-full lg:w-4xl w-full">
+        <div className="items-center justify-center h-full flex lg:w-120 mx-auto">
+          {showSignIn ? <SignInForm onSwitchToSignUp={() => setShowSignIn(false)} /> : <SignUpForm onSwitchToSignIn={() => setShowSignIn(true)} />}
+        </div>
       </div>
-      <div className="hidden md:block">
+      <div className="hidden lg:block">
         <img src="/134.png" className="relative h-230 w-auto" />
       </div>
     </div>

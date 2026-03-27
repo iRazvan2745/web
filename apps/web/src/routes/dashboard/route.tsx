@@ -1,7 +1,8 @@
-import { Link, Outlet, createFileRoute, useLocation } from "@tanstack/react-router";
+import { Link, Outlet, createFileRoute, redirect, useLocation } from "@tanstack/react-router";
 import {
   Sidebar,
   SidebarContent,
+  SidebarFooter,
   SidebarGroup,
   SidebarGroupContent,
   SidebarGroupLabel,
@@ -16,7 +17,20 @@ import {
 } from "@irazz.lol/ui/components/sidebar";
 import { LayoutDashboardIcon } from "lucide-react";
 
+import { getUser } from "@/functions/get-user";
+import { NavUser } from "@/components/user-menu";
+
 export const Route = createFileRoute("/dashboard")({
+  beforeLoad: async () => {
+    const session = await getUser();
+
+    if (!session?.user) {
+      throw redirect({
+        to: "/login",
+      });
+    }
+  },
+  loader: async () => getUser(),
   component: DashboardLayout,
 });
 
@@ -24,6 +38,13 @@ function DashboardLayout() {
   const pathname = useLocation({
     select: (location) => location.pathname,
   });
+  const session = Route.useLoaderData();
+
+  if (!session?.user) {
+    return null;
+  }
+
+  const user = session.user;
 
   return (
     <SidebarProvider>
@@ -42,15 +63,18 @@ function DashboardLayout() {
                   <SidebarMenuButton
                     render={<Link to="/dashboard" />}
                     isActive={pathname === "/dashboard"}
-                    tooltip="Overview"
+                    tooltip="Billing"
                   >
                     <LayoutDashboardIcon />
-                    <span>Overview</span>
+                    <span>Billing</span>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
               </SidebarMenu>
             </SidebarGroupContent>
           </SidebarGroup>
+          <SidebarFooter className="mt-auto border-t">
+            <NavUser user={user} />
+          </SidebarFooter>
         </SidebarContent>
       </Sidebar>
       <SidebarRail />
@@ -58,7 +82,7 @@ function DashboardLayout() {
         <header className="sticky top-0 z-10 flex h-14 items-center gap-3 bg-background/90 px-4 backdrop-blur-sm">
           <SidebarTrigger />
           <div className="font-mono text-xs uppercase tracking-[0.2em]">
-            Dashboard
+            Billing
           </div>
         </header>
         <Outlet />
