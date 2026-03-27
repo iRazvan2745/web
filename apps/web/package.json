@@ -7,7 +7,7 @@
     "serve": "vite preview",
     "dev": "vite dev",
     "deploy": "vite build && wrangler deploy --config dist/server/wrangler.json",
-    "preview": "vite build && wrangler dev --config dist/server/wrangler.json",
+    "preview": "vite preview",
     "cf-typegen": "wrangler types"
   },
   "dependencies": {
