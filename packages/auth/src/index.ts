@@ -8,12 +8,14 @@ import { createAuthMiddleware } from "better-auth/api";
 import { tanstackStartCookies } from "better-auth/tanstack-start";
 import { stripe } from "@irazz.lol/stripe";
 
+const trustedOrigins = [...new Set([env.CORS_ORIGIN, env.BETTER_AUTH_URL])];
+
 export const auth = betterAuth({
   database: drizzleAdapter(db, {
     provider: "pg",
     schema: schema,
   }),
-  trustedOrigins: [env.CORS_ORIGIN],
+  trustedOrigins,
   emailAndPassword: {
     enabled: true,
   },

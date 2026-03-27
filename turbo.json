@@ -17,6 +17,12 @@
       "cache": false,
       "persistent": true
     },
+    "deploy": {
+      "cache": false
+    },
+    "destroy": {
+      "cache": false
+    },
     "db:push": {
       "cache": false
     },

@@ -8,7 +8,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@irazz.lol/ui/components/card";
-import { useMutation, useQuery } from "@tanstack/react-query";
+import { useMutation } from "@tanstack/react-query";
 import { createFileRoute } from "@tanstack/react-router";
 import {
   CreditCardIcon,
@@ -19,24 +19,18 @@ import {
 } from "lucide-react";
 import { toast } from "sonner";
 
-import { client, orpc } from "@/utils/orpc";
+import { getBillingData } from "@/functions/get-billing-data";
+import { client } from "@/utils/orpc";
 
 export const Route = createFileRoute("/dashboard/")({
+  loader: () => getBillingData(),
   component: RouteComponent,
 });
 
 const ACTIVE_SUBSCRIPTION_STATUSES = new Set(["active", "trialing", "past_due", "incomplete"]);
 
 function RouteComponent() {
-  const { data: products, isLoading: productsLoading } = useQuery(
-    orpc.stripe.catalog.listProducts.queryOptions(),
-  );
-  const { data: subscriptions, isLoading: subscriptionsLoading } = useQuery(
-    orpc.stripe.subscriptions.getSubscriptions.queryOptions(),
-  );
-  const { data: invoices, isLoading: invoicesLoading } = useQuery(
-    orpc.stripe.invoices.getInvoices.queryOptions(),
-  );
+  const { products, subscriptions, invoices } = Route.useLoaderData();
 
   const checkoutMutation = useMutation({
     mutationFn: ({ priceId }: { priceId: string }) =>
@@ -61,9 +55,9 @@ function RouteComponent() {
     },
   });
 
-  const activeSubscriptions =
-    subscriptions?.filter((subscription) => ACTIVE_SUBSCRIPTION_STATUSES.has(subscription.status)) ??
-    [];
+  const activeSubscriptions = subscriptions.filter((subscription) =>
+    ACTIVE_SUBSCRIPTION_STATUSES.has(subscription.status),
+  );
   const activeProductIds = new Set(
     activeSubscriptions.flatMap((subscription) => subscription.items.map((item) => item.productId)),
   );
@@ -110,17 +104,17 @@ function RouteComponent() {
           <CardContent className="grid gap-4 md:grid-cols-3">
             <MetricCard
               label="Plans"
-              value={productsLoading ? "..." : String(products?.length ?? 0)}
+              value={String(products.length)}
               hint="Recurring prices from Stripe"
             />
             <MetricCard
               label="Active subscriptions"
-              value={subscriptionsLoading ? "..." : String(activeSubscriptions.length)}
+              value={String(activeSubscriptions.length)}
               hint="Statuses counted: active, trialing, past_due, incomplete"
             />
             <MetricCard
               label="Invoices"
-              value={invoicesLoading ? "..." : String(invoices?.length ?? 0)}
+              value={String(invoices.length)}
               hint="Latest invoices on your Stripe customer"
             />
           </CardContent>
@@ -135,9 +129,7 @@ function RouteComponent() {
               </CardDescription>
             </CardHeader>
             <CardContent className="space-y-3">
-              {productsLoading ? (
-                <EmptyState label="Loading plans from Stripe..." />
-              ) : products && products.length > 0 ? (
+              {products.length > 0 ? (
                 products.map((product) => {
                   const isCurrent = activeProductIds.has(product.productId);
                   const isSubmitting =
@@ -200,9 +192,7 @@ function RouteComponent() {
               </CardDescription>
             </CardHeader>
             <CardContent className="space-y-3">
-              {subscriptionsLoading ? (
-                <EmptyState label="Loading subscriptions..." />
-              ) : subscriptions && subscriptions.length > 0 ? (
+              {subscriptions.length > 0 ? (
                 subscriptions.map((subscription) => (
                   <div key={subscription.id} className="space-y-2 border border-border/70 p-4">
                     <div className="flex flex-wrap items-center gap-2">
@@ -245,9 +235,7 @@ function RouteComponent() {
             <CardDescription>Recent invoice history for this account.</CardDescription>
           </CardHeader>
           <CardContent className="space-y-3">
-            {invoicesLoading ? (
-              <EmptyState label="Loading invoices..." />
-            ) : invoices && invoices.length > 0 ? (
+            {invoices.length > 0 ? (
               invoices.map((invoice) => {
                 const invoiceUrl = invoice.hostedInvoiceUrl ?? invoice.invoicePdf;
                 const canOpen = Boolean(invoiceUrl);

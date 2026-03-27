@@ -7,6 +7,8 @@ import { stripe } from "@irazz.lol/stripe";
 import { protectedProcedure } from "../..";
 import { ensureStripeCustomer } from "./shared";
 
+const STRIPE_MANAGED_PAYMENTS_API_VERSION = "2026-03-04.preview";
+
 export const stripeCheckoutRouter = {
   createCheckoutSession: protectedProcedure
     .input(
@@ -69,7 +71,7 @@ export const stripeCheckoutRouter = {
           },
         ],
         managed_payments: {
-          enabled: true
+          enabled: true,
         },
         success_url: `${env.BETTER_AUTH_URL}/dashboard?checkout=success`,
         cancel_url: `${env.BETTER_AUTH_URL}/dashboard?checkout=canceled`,
@@ -86,6 +88,8 @@ export const stripeCheckoutRouter = {
             priceId: input.priceId,
           },
         },
+      }, {
+        apiVersion: STRIPE_MANAGED_PAYMENTS_API_VERSION,
       });
 
       if (!session.url) {
