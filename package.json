@@ -32,7 +32,7 @@
     "build": "turbo build",
     "check-types": "turbo check-types",
     "dev:web": "turbo -F web dev",
-    "deploy:web": "cd apps/web && npx wrangler deploy",
+    "deploy:web": "cd apps/web && bun run deploy",
     "stripe": "stripe listen --forward-to localhost:3001/api/stripe/webhook",
     "db:push": "turbo -F @irazz.lol/db db:push",
     "db:studio": "turbo -F @irazz.lol/db db:studio",

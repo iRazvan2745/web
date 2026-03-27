@@ -3,17 +3,23 @@ import { createEnv } from "@t3-oss/env-core";
 import { fileURLToPath } from "node:url";
 import { z } from "zod";
 
-const workspaceRoot = fileURLToPath(new URL("../../../", import.meta.url));
-const appEnvDir = fileURLToPath(new URL("../../../apps/web/", import.meta.url));
-const candidateEnvFiles = [
-  `${appEnvDir}.env.local`,
-  `${appEnvDir}.env`,
-  `${workspaceRoot}.env.local`,
-  `${workspaceRoot}.env`,
-];
+// Cloudflare workerd does not expose file-based module URLs, so only resolve dotenv
+// files when this module is running from the filesystem in a Node-like environment.
+const moduleUrl = typeof import.meta.url === "string" ? import.meta.url : undefined;
 
-for (const path of candidateEnvFiles) {
-  dotenv.config({ path, override: false, quiet: true });
+if (moduleUrl?.startsWith("file:")) {
+  const workspaceRoot = fileURLToPath(new URL("../../../", moduleUrl));
+  const appEnvDir = fileURLToPath(new URL("../../../apps/web/", moduleUrl));
+  const candidateEnvFiles = [
+    `${appEnvDir}.env.local`,
+    `${appEnvDir}.env`,
+    `${workspaceRoot}.env.local`,
+    `${workspaceRoot}.env`,
+  ];
+
+  for (const path of candidateEnvFiles) {
+    dotenv.config({ path, override: false, quiet: true });
+  }
 }
 
 export const env = createEnv({
