@@ -47,12 +47,30 @@ export function FirstSection() {
         </div>
         <div className="border-r w-full h-screen -mr-23 hidden lg:flex">
           <div className="border-y w-full flex my-33.25 items-center justify-center">
-            <img
-              src={"/head.png"}
-              className="h-fit w-180"
-              alt="head"
-              draggable={false}
-            />
+            <picture>
+              <source
+                type="image/avif"
+                srcSet="/head-720.avif 720w, /head-1440.avif 1440w"
+                sizes="(min-width: 1024px) 45rem, 0px"
+              />
+              <source
+                type="image/webp"
+                srcSet="/head-720.webp 720w, /head-1440.webp 1440w"
+                sizes="(min-width: 1024px) 45rem, 0px"
+              />
+              <img
+                src="/head.png"
+                width={1440}
+                height={1606}
+                className="h-auto w-180"
+                alt="Portrait of Razvan"
+                sizes="(min-width: 1024px) 45rem, 0px"
+                loading="eager"
+                decoding="async"
+                fetchPriority="high"
+                draggable={false}
+              />
+            </picture>
             <p className="absolute bottom-0">O-i-i-a-i-o, o-i-i-i-a-i</p>
           </div>
         </div>
