@@ -3,7 +3,6 @@ import {
   Card,
   CardAction,
   CardContent,
-  CardDescription,
   CardFooter,
   CardHeader,
   CardTitle,
@@ -21,6 +20,7 @@ import { toast } from "sonner";
 
 import { getBillingData } from "@/functions/get-billing-data";
 import { client } from "@/utils/orpc";
+import { authClient } from "@/lib/auth-client";
 
 export const Route = createFileRoute("/dashboard/")({
   loader: () => getBillingData(),
@@ -61,17 +61,14 @@ function RouteComponent() {
   const activeProductIds = new Set(
     activeSubscriptions.flatMap((subscription) => subscription.items.map((item) => item.productId)),
   );
+  const user = authClient.useSession().data?.user
 
   return (
     <div className="flex-1 p-6">
       <div className="mx-auto flex max-w-6xl flex-col gap-6">
         <Card className="">
-          <CardHeader>
-            <CardTitle className="font-mono text-xl uppercase tracking-[0.2em]">Billing</CardTitle>
-            <CardDescription>
-              Start a subscription with Stripe Checkout, review what is active on your account,
-              and open the Stripe billing portal to manage payment methods or cancellations.
-            </CardDescription>
+          <CardHeader className="items-center flex justify-between">
+            <CardTitle className="font-mono text-xl">Hi {user?.name?.split(" ")[0]}</CardTitle>
             <CardAction>
               <div className="flex gap-2">
                 <Button
@@ -101,32 +98,12 @@ function RouteComponent() {
               </div>
             </CardAction>
           </CardHeader>
-          <CardContent className="grid gap-4 md:grid-cols-3">
-            <MetricCard
-              label="Plans"
-              value={String(products.length)}
-              hint="Recurring prices from Stripe"
-            />
-            <MetricCard
-              label="Active subscriptions"
-              value={String(activeSubscriptions.length)}
-              hint="Statuses counted: active, trialing, past_due, incomplete"
-            />
-            <MetricCard
-              label="Invoices"
-              value={String(invoices.length)}
-              hint="Latest invoices on your Stripe customer"
-            />
-          </CardContent>
         </Card>
 
         <section className="grid gap-4 lg:grid-cols-[1.2fr_0.8fr]">
           <Card>
-            <CardHeader>
+            <CardHeader className="border-b">
               <CardTitle>Available plans</CardTitle>
-              <CardDescription>
-                These subscription prices are fetched from your Stripe dashboard.
-              </CardDescription>
             </CardHeader>
             <CardContent className="space-y-3">
               {products.length > 0 ? (
@@ -144,7 +121,7 @@ function RouteComponent() {
                       <div className="space-y-1">
                         <div className="flex flex-wrap items-center gap-2">
                           <h3 className="text-sm font-medium">{product.productName}</h3>
-                          <span className="border px-2 py-0.5 font-mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground">
+                          <span className="border px-2 py-0.5 font-mono text-[10px] text-muted-foreground">
                             {formatInterval(product.interval, product.intervalCount)}
                           </span>
                         </div>
@@ -179,32 +156,28 @@ function RouteComponent() {
                   );
                 })
               ) : (
-                <EmptyState label="No recurring Stripe prices found." />
+                <EmptyState label="No plans are available for you" />
               )}
             </CardContent>
           </Card>
 
           <Card>
-            <CardHeader>
+            <CardHeader className="border-b">
               <CardTitle>Current subscriptions</CardTitle>
-              <CardDescription>
-                Live subscription state directly from Stripe.
-              </CardDescription>
             </CardHeader>
-            <CardContent className="space-y-3">
+            <CardContent className="space-y-px p-0 -mt-4 -mb-4 bg-border">
               {subscriptions.length > 0 ? (
                 subscriptions.map((subscription) => (
-                  <div key={subscription.id} className="space-y-2 border border-border/70 p-4">
-                    <div className="flex flex-wrap items-center gap-2">
+                  <div key={subscription.id} className="space-y-2 p-4 bg-card">
+                    <div className="flex flex-wrap items-center gap-2 justify-between">
                       <h3 className="font-medium">
                         {subscription.items.map((item) => item.productName).join(", ")}
                       </h3>
-                      <span className="border px-2 py-0.5 font-mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground">
-                        {subscription.status.replaceAll("_", " ")}
+                      <span className="relative -right-4 -top-4 border-b border-l px-2 py-0.5 font-mono text-[10px] bg-foregrond bg-background text-muted-foreground">
+                        {subscription.status.replaceAll("_", " ")[0].toUpperCase() + subscription.status.replaceAll("_", " ").slice(1)}
                       </span>
                     </div>
                     <div className="space-y-1 text-xs text-muted-foreground">
-                      <p>Stripe subscription: {subscription.id}</p>
                       <p>
                         Renews on{" "}
                         {subscription.currentPeriodEnd
@@ -212,29 +185,28 @@ function RouteComponent() {
                           : "unknown"}
                       </p>
                       {subscription.cancelAtPeriodEnd ? (
-                        <p>Cancels at period end.</p>
+                        <p>Cancels at period end</p>
                       ) : null}
                     </div>
                   </div>
                 ))
               ) : (
-                <EmptyState label="No subscriptions yet." />
+                <EmptyState label="No subscriptions yet" />
               )}
             </CardContent>
             <CardFooter>
               <p className="text-xs text-muted-foreground">
-                Need to update a card or cancel? Use the billing portal.
+                Need to update a card or cancel? Use the billing portal
               </p>
             </CardFooter>
           </Card>
         </section>
 
         <Card>
-          <CardHeader>
+          <CardHeader className="border-b">
             <CardTitle>Invoices</CardTitle>
-            <CardDescription>Recent invoice history for this account.</CardDescription>
           </CardHeader>
-          <CardContent className="space-y-3">
+          <CardContent className="space-y-px p-0 -mt-4 -mb-4 bg-border">
             {invoices.length > 0 ? (
               invoices.map((invoice) => {
                 const invoiceUrl = invoice.hostedInvoiceUrl ?? invoice.invoicePdf;
@@ -244,13 +216,15 @@ function RouteComponent() {
                   return (
                     <div
                       key={invoice.id}
-                      className="grid gap-3 border border-border/70 p-4 text-left md:grid-cols-[1fr_auto]"
+                      className="grid gap-3 bg-card p-4 text-left md:grid-cols-[1fr_auto]"
                     >
                       <div className="space-y-1">
                         <div className="flex flex-wrap items-center gap-2">
                           <h3 className="font-medium">{invoice.number ?? invoice.id}</h3>
-                          <span className="border px-2 py-0.5 font-mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground">
-                            {invoice.status ?? "draft"}
+                          <span className="border px-2 py-0.5 font-mono text-[10px] text-muted-foreground">
+                            {invoice?.status
+                              ? invoice.status.charAt(0).toUpperCase() + invoice.status.slice(1)
+                              : "Draft"}
                           </span>
                         </div>
                         <div className="space-y-1 text-xs text-muted-foreground">
@@ -271,7 +245,7 @@ function RouteComponent() {
                   <button
                     key={invoice.id}
                     type="button"
-                    className="grid w-full gap-3 border border-border/70 p-4 text-left transition-colors hover:bg-muted/30 md:grid-cols-[1fr_auto]"
+                    className="grid w-full gap-3 bg-card p-4 text-left transition-colors hover:bg-muted/30 md:grid-cols-[1fr_auto]"
                     onClick={() => {
                       window.location.assign(url);
                     }}
@@ -279,8 +253,10 @@ function RouteComponent() {
                     <div className="space-y-1">
                       <div className="flex flex-wrap items-center gap-2">
                         <h3 className="font-medium">{invoice.number ?? invoice.id}</h3>
-                        <span className="border px-2 py-0.5 font-mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground">
-                          {invoice.status ?? "draft"}
+                        <span className="border px-2 py-0.5 font-mono text-[10px] text-muted-foreground">
+                          {invoice?.status
+                            ? invoice.status.charAt(0).toUpperCase() + invoice.status.slice(1)
+                            : "Draft"}
                         </span>
                       </div>
                       <div className="space-y-1 text-xs text-muted-foreground">
@@ -304,26 +280,6 @@ function RouteComponent() {
           </CardContent>
         </Card>
       </div>
-    </div>
-  );
-}
-
-function MetricCard({
-  hint,
-  label,
-  value,
-}: {
-  hint: string;
-  label: string;
-  value: string;
-}) {
-  return (
-    <div className="border border-border/70 bg-card p-4">
-      <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground">
-        {label}
-      </p>
-      <p className="mt-2 text-2xl font-medium">{value}</p>
-      <p className="mt-1 text-xs text-muted-foreground">{hint}</p>
     </div>
   );
 }
