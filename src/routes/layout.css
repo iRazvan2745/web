@@ -1,0 +1,26 @@
+@import url("https://fonts.bunny.net/css?family=instrument-sans:400,400i,500,500i,600,600i,700,700i|instrument-serif:400,400i");
+@import 'lenis/dist/lenis.css';
+@import "tailwindcss";
+/* @import "tw-animate-css"; */
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  --background: #f7f4ef;
+  --foreground: #2c2925;
+}
+
+.dark {
+  --background: #14110f;
+  --foreground: #f7f4ef;
+}
+
+@theme inline {
+  --font-sans: "Instrument Sans", sans-serif;
+  --color-foreground: var(--foreground);
+  --color-background: var(--background);
+}
+
+* {
+  border-color: var(--foreground);
+}
