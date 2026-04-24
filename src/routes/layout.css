@@ -8,17 +8,20 @@
 :root {
   --background: #f7f4ef;
   --foreground: #2c2925;
+  --border: #2c2925;
 }
 
 .dark {
   --background: #14110f;
   --foreground: #f7f4ef;
+  --border: #f7f4ef;
 }
 
 @theme inline {
   --font-sans: "Instrument Sans", sans-serif;
   --color-foreground: var(--foreground);
   --color-background: var(--background);
+  --color-border: var(var(--foreground));
 }
 
 * {

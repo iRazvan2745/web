@@ -20,6 +20,7 @@
 <svelte:head>
 	<link rel="icon" href={"/favicon.ico"} />
 	<link rel="stylesheet" href="https://unpkg.com/lenis@1.3.23/dist/lenis.css" />
+	<title>irazz.lol</title>
 </svelte:head>
 <div class="border-foreground bg-background">
 	<Header />

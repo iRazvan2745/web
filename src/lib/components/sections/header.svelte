@@ -1,8 +1,12 @@
+<script>
+  import { resolve } from "$app/paths"
+</script>
+
 <header class="flex sticky top-0 bottom-0 bg-background/60 backdrop-blur-md z-50 justify-between border-b h-14">
       <div class="px-4">
         <div class="flex items-center h-14 w-17.75 -ml-4 border-r">
           <a
-            href="/"
+            href={resolve("/")}
             class="font-mono hover:underline cursor-pointer px-3.75 hover:bg-foreground duration-300 hover:text-background h-full flex items-center justify-center"
           >
             home
@@ -12,7 +16,7 @@
       <div class="flex h-14">
         <div class="flex items-center h-14 border-x">
           <a
-            href="/key"
+            href={resolve("/key")}
             class="font-mono hover:underline cursor-pointer px-4 hover:bg-foreground duration-300 hover:text-background h-full flex items-center justify-center"
           >
             ssh
