@@ -7,7 +7,7 @@
         <div class="flex items-center h-14 w-17.75 -ml-4 border-r">
           <a
             href={resolve("/")}
-            class="font-mono hover:underline cursor-pointer px-3.75 hover:bg-foreground duration-300 hover:text-background h-full flex items-center justify-center"
+            class="font-mono hover:underline cursor-pointer px-3.75 w-full hover:bg-foreground duration-300 hover:text-background h-full flex items-center justify-center"
           >
             home
           </a>
