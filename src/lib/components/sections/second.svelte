@@ -55,7 +55,7 @@
     </div>
 
     <div class="h-screen w-260 -mr-23 border-x">
-      <div class="sticky top-0 mt-71.5 -mr-18 w-full border-y">
+      <div class="sticky top-0 mt-71.5 -mr-18 w-full border-y bg-background">
         <div class="p-4 border-y w-full -mt-px">
           <div class="justify-end flex items-center gap-4">
             <img
