@@ -2,12 +2,12 @@
   import BetterAuth from "../icons/ba.svelte";
   import Bun from "../icons/bun.svelte";
   import Docker from "../icons/docker.svelte";
-  import Nextjs from "../icons/next.svelte";
+  import Svelte from "../icons/svelte.svelte";
   import TypeScript from "../icons/ts.svelte";
   import Turborepo from "../icons/turborepo.svelte";
   import PostgreSQL from "../icons/postgres.svelte";
-  import Prisma from "../icons/prisma.svelte";
-  import React from "../icons/react.svelte";
+  import Drizzle from "../icons/drizzle.svelte";
+  import Vite from "../icons/vite.svelte";
   import TailwindCSS from "../icons/tailwind.svelte";
 </script>
 
@@ -29,11 +29,11 @@
                 <h3>My usual tech stack:</h3>
                 <div class="grid grid-cols-5 gap-3">
                   <Bun class="size-8" />
-                  <Nextjs class="size-8" />
-                  <React class="size-8" />
+                  <Svelte class="size-8" />
+                  <Vite class="size-8" />
                   <TailwindCSS class="size-8" />
                   <PostgreSQL class="size-8" />
-                  <Prisma class="size-8 invert" />
+                  <Drizzle class="size-8 bg-[#191919]" />
                   <BetterAuth class="size-8" />
                   <Docker class="size-8" />
                   <TypeScript class="size-8" />
