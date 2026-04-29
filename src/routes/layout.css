@@ -17,5 +17,5 @@
 }
 
 * {
-  @apply border-foreground;
+  @apply border-foreground text-foreground;
 }

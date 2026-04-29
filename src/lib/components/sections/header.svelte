@@ -20,9 +20,9 @@
         </div>
       </div>
       <div class="flex h-14">
-        <div class="flex items-center h-14 px-4 lg:hidden block">
+        <div class="items-center h-14 px-4 lg:hidden block">
             <button onclick={() => toggleLocale()} class="flex items-center justify-center h-full w-full text-2xl">
-              {getLocale() === "en" ? "🇬🇧" : "🇷🇴"}
+              {getLocale() === "en" ? "🇷🇴" : "🇬🇧"}
             </button>
         </div>
         <div class="flex items-center h-14 border-x">
@@ -51,7 +51,7 @@
         </div>
         <div class="w-[70px] h-14 select-none lg:block hidden">
           <button onclick={() => toggleLocale()} class="flex items-center justify-center h-full w-full text-2xl">
-            {getLocale() === "en" ? "🇬🇧" : "🇷🇴"}
+            {getLocale() === "en" ? "🇷🇴" : "🇬🇧"}
           </button>
         </div>
       </div>
