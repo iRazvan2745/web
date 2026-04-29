@@ -9,6 +9,7 @@
   import Drizzle from "../icons/drizzle.svelte";
   import Vite from "../icons/vite.svelte";
   import TailwindCSS from "../icons/tailwind.svelte";
+  import { m } from "$lib/paraglide/messages";
 </script>
 
 <div class="border-b -mt-1">
@@ -20,13 +21,13 @@
             <div class="h-auto w-full p-4">
               <p class="text-9xl">răzvan</p>
               <p class="font-serif text-xl mx-auto flex italic">
-                "an idiot admires complexity, a genius admires simplicity"
+                "{m.quote()}"
               </p>
             </div>
 
             <div class="border-t p-4 -ml-17.75">
               <div class="ml-17.75 flex gap-4">
-                <h3>My usual tech stack:</h3>
+                <h3>{m.my_usual_tech_stack()}:</h3>
                 <div class="grid grid-cols-5 gap-3">
                   <Bun class="size-8" />
                   <Svelte class="size-8" />

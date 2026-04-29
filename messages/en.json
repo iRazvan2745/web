@@ -1,0 +1,11 @@
+{
+  "$schema": "https://inlang.com/schema/inlang-message-format",
+  "quote": "an idiot admires complexity, a genius admires simplicity",
+  "my_usual_tech_stack": "my usual tech stack",
+  "some_stuff": "some stuff",
+  "uptimekit_description": "the open-source worker driven uptime monitoring solution",
+  "bee_description": "my now closed cloud hosting company powered by the latest ryzen 9 cpus and hardware",
+  "bee_dashboard_available": "dashboard is available",
+  "active": "active",
+  "inactive": "inactive"
+}

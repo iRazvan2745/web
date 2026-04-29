@@ -1,0 +1,11 @@
+{
+  "$schema": "https://inlang.com/schema/inlang-message-format",
+  "quote": "un idiot admira complexitatea, un geniu admira simplicitatea",
+  "my_usual_tech_stack": "tech stack ul meu uzual",
+  "some_stuff": "niste lucruri",
+  "uptimekit_description": "o solutie open-source de monitorizare a uptimeului bazata pe workeri",
+  "bee_description": "fosta mea companie de cloud hosting",
+  "bee_dashboard_available": "panoul de control este disponibil",
+  "active": "activ",
+  "inactive": "inactiv"
+}

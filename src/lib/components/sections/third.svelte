@@ -1,6 +1,7 @@
 <script lang="ts">
   import { ArrowLeft, ArrowRight } from "lucide-svelte";
   import { resolve } from "$app/paths"
+	import { m } from "$lib/paraglide/messages";
 
   let page = $state(1);
 
@@ -59,7 +60,7 @@
     <div class="h-screen w-260 -mr-23 border-x bg-background ">
 
       <div class="sticky top-14 flex justify-end w-full right-0 bg-background">
-        <span class="border-l px-2 font-mono border-b w-25 flex items-center justify-center">inactive</span>
+        <span class="border-l px-2 font-mono border-b w-25 flex items-center justify-center">{m.inactive()}</span>
       </div>
 
       <div class="sticky top-20 mt-71.5 -mb-px -mr-18 w-full border-y bg-background">
@@ -75,8 +76,7 @@
         </div>
 
         <p class="flex mx-auto items-center justify-center p-1 w-svw lg:w-full">
-          My now closed cloud hosting company powered by the latest Ryzen 9
-          CPUs and hardware
+          {m.bee_description()}
         </p>
       </div>
 
@@ -86,7 +86,7 @@
           target="_blank"
           class="p-4 gap-2 border flex items-center hover:bg-foreground hover:text-background hover:underline duration-300"
         >
-          <p class="text-lg">Dashboard is available</p>
+          <p class="text-lg">{m.bee_dashboard_available()}</p>
         </a>
       </div>
     </div>

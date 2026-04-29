@@ -1,5 +1,11 @@
 <script>
   import { resolve } from "$app/paths"
+  import { getLocale, setLocale } from "$lib/paraglide/runtime";
+
+  const toggleLocale = () => {
+    setLocale(getLocale() === "ro" ? "en" : "ro")
+  }
+
 </script>
 
 <header class="flex sticky top-0 bottom-0 bg-background/60 backdrop-blur-md z-50 justify-between border-b h-14">
@@ -38,6 +44,10 @@
             contact
           </a>
         </div>
-        <div class="w-[70px] h-14 select-none lg:block hidden text-background text-[0px]">literally nothing in here, svelte wouldnt stop crying</div>
+        <div class="w-[70px] h-14 select-none lg:block hidden">
+          <button onclick={() => toggleLocale()} class="flex items-center justify-center h-full w-full text-2xl">
+            {getLocale() === "en" ? "🇬🇧" : "🇷🇴"}
+          </button>
+        </div>
       </div>
     </header>

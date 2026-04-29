@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { m } from "$lib/paraglide/messages";
   import { ArrowLeft, ArrowRight, GitGraph, Globe } from "lucide-svelte";
 
   let page = $state(1);
@@ -58,7 +59,7 @@
     <div class="h-screen w-260 -mr-23 border-x bg-background ">
 
       <div class="sticky top-14 flex justify-end w-full right-0 bg-background">
-        <span class="border-l px-2 font-mono border-b w-25 flex items-center justify-center">active</span>
+        <span class="border-l px-2 font-mono border-b w-25 flex items-center justify-center">{m.active()}</span>
       </div>
 
       <div class="sticky top-20 mt-71.5 -mb-px -mr-18 w-full border-y bg-background">
@@ -74,7 +75,7 @@
         </div>
 
         <p class="flex mx-auto items-center justify-center p-1 w-svw lg:w-full">
-          The open-source worker driven uptime monitoring solution.
+          {m.uptimekit_description()}
         </p>
       </div>
 
