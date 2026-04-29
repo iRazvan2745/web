@@ -8,11 +8,11 @@
 
 <main class="border-foreground">
     <div class="text-foreground">
-      <div class="sticky inset-0 top-14.25 flex items-center justify-center z-20 lg:hidden mx-auto">
+      <!-- <div class="sticky inset-0 top-14.25 flex items-center justify-center z-20 lg:hidden mx-auto">
         <p class="text-foreground bg-background text-lg font-mono border-b border-x px-1">
           use a device with a wider screen pls
         </p>
-      </div>
+      </div> -->
       <FirstSection />
       <MyWork />
       <SecondSection />

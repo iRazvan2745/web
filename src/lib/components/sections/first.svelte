@@ -12,15 +12,15 @@
 </script>
 
 <div class="border-b -mt-1">
-  <div class="flex items-center justify-between mx-40">
+  <div class="flex items-center justify-between md:mx-40 ml-40">
     <div class="flex">
       <div class="h-screen w-fit -ml-42.5 lg:-ml-22.5 border-l-0 lg:border-l border-r">
-        <div class="sticky top-10 mt-33.25 -ml-18 w-full border-t">
+        <div class="sticky top-10 mt-33 -ml-18 w-full border-t">
           <div class="ml-18 border-y w-full -m-px">
             <div class="h-auto w-full p-4">
-              <p class="text-9xl">Răzvan</p>
+              <p class="text-9xl">răzvan</p>
               <p class="font-serif text-xl mx-auto flex italic">
-                "An idiot admires complexity, a genius admires simplicity"
+                "an idiot admires complexity, a genius admires simplicity"
               </p>
             </div>
 
@@ -76,7 +76,7 @@
         </picture>
 
         <p class="absolute bottom-0 left-1/2 -translate-x-1/2 bg-background px-2">
-          O-i-i-a-i-o, o-i-i-i-a-i
+          o-i-i-a-i-o, o-i-i-i-a-i
         </p>
       </div>
     </div>

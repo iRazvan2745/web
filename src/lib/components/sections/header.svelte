@@ -19,7 +19,7 @@
             href={resolve("/key")}
             class="font-mono hover:underline cursor-pointer px-4 hover:bg-foreground duration-300 hover:text-background h-full flex items-center justify-center"
           >
-            ssh
+            key
           </a>
         </div>
         <div class="flex items-center h-14 border-r">
@@ -38,6 +38,6 @@
             contact
           </a>
         </div>
-        <div class="w-[70.4px] h-14 " />
+        <div class="w-[70px] h-14 select-none lg:block hidden text-background text-[0px]">literally nothing in here, svelte wouldnt stop crying</div>
       </div>
     </header>
