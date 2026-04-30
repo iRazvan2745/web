@@ -7,5 +7,6 @@
   "bee_description": "my now closed cloud hosting company powered by the latest ryzen 9 cpus and hardware",
   "bee_dashboard_available": "dashboard is available",
   "active": "active",
-  "inactive": "inactive"
+  "inactive": "inactive",
+  "desktop_recommended": "Desktop recomended"
 }
