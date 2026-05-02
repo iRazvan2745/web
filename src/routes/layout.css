@@ -6,14 +6,30 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  --background: #f3f5ed;
-  --foreground: #26352b;
+  /* --background: #f3f5ed;
+  --foreground: #26352b; */
+  --background: var(--color-mantis-50);
+  --foreground: var(--color-mantis-900);
 }
 
 @theme inline {
   --font-sans: "Instrument Sans", sans-serif;
   --color-foreground: var(--foreground);
   --color-background: var(--background);
+}
+
+@theme {
+  --color-mantis-50: #f4faf3;
+  --color-mantis-100: #e6f5e3;
+  --color-mantis-200: #cee9c9;
+  --color-mantis-300: #a6d79e;
+  --color-mantis-400: #74bb69;
+  --color-mantis-500: #53a047;
+  --color-mantis-600: #408336;
+  --color-mantis-700: #34682d;
+  --color-mantis-800: #2d5328;
+  --color-mantis-900: #264522;
+  --color-mantis-950: #10250e;
 }
 
 * {

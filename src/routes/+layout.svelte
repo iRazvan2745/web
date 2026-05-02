@@ -22,7 +22,7 @@
 	<link rel="stylesheet" href="https://unpkg.com/lenis@1.3.23/dist/lenis.css" />
 	<title>irazz.lol</title>
 </svelte:head>
-<div class="border-foreground bg-background">
+<div class="border-foreground bg-background h-svh">
 	<Header />
 	{@render children()}
 </div>

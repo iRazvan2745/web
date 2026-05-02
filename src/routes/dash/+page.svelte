@@ -22,7 +22,7 @@
 
           <div class="p-2">
             <p class="mb-1 text-xs font-bold text-muted-foreground">
-              backend
+              backenss
             </p>
             <ul class="ml-2 space-y-1 border-l border-border">
               <li class="cursor-default rounded-sm pl-2 hover:bg-muted">
@@ -67,8 +67,7 @@
         <p class="border-b px-2 py-1">overview</p>
 
         <p class="p-2">
-          tired of all the generic pterodactyl themes? here's beedash, a
-          complete rewrite of pterodactyl’s frontend, designed to offer a
+          a complete write of pterodactyl’s frontend, designed to offer a
           modern, future-proof alternative to its outdated react 16 mess. the
           dashboard also includes several extra features you can opt out of,
           such as server metrics, letting users track their usage over time.
