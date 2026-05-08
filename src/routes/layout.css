@@ -33,5 +33,5 @@
 }
 
 * {
-  @apply border-foreground text-foreground;
+  @apply border-foreground;
 }

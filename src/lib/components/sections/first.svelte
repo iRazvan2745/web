@@ -10,6 +10,9 @@
   import Vite from "../icons/vite.svelte";
   import TailwindCSS from "../icons/tailwind.svelte";
   import { m } from "$lib/paraglide/messages";
+	import React from "../icons/react.svelte";
+	import Next from "../icons/next.svelte";
+	import Rust from "../icons/rust.svelte";
 </script>
 
 <div class="border-b -mt-1">
@@ -25,20 +28,30 @@
               </p>
             </div>
 
-            <div class="border-t p-4 -ml-17.75">
-              <div class="ml-17.75 flex gap-4">
-                <h3>{m.my_usual_tech_stack()}:</h3>
-                <div class="grid grid-cols-5 gap-3">
+            <div class="border-t py-4 -ml-17.75 space-y-4">
+              <div class="ml-17.75 flex gap-4 justify-between px-4">
+                <h3>{m.i_know()}:</h3>
+                <div class="grid grid-cols-6 gap-3">
+                  <React class="size-8" />
                   <Bun class="size-8" />
                   <Svelte class="size-8" />
                   <Vite class="size-8" />
                   <TailwindCSS class="size-8" />
+                  <Next class="size-8" />
                   <PostgreSQL class="size-8" />
                   <Drizzle class="size-8 bg-[#191919]" />
                   <BetterAuth class="size-8" />
                   <Docker class="size-8" />
                   <TypeScript class="size-8" />
                   <Turborepo class="size-8" />
+                </div>
+              </div>
+              <div class="border-t">
+                <div class="ml-17.75 flex px-4 gap-4 justify-between">
+                    <h3>vreau sa incerc:</h3>
+                    <div class="grid grid-cols-6 gap-3">
+                        <Rust class="size-8 invert" />
+                    </div>
                 </div>
               </div>
             </div>

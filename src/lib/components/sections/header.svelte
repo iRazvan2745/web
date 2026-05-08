@@ -13,7 +13,7 @@
         <div class="flex items-center h-14 w-17.75 -ml-4 border-r">
           <a
             href={resolve("/")}
-            class="font-mono hover:underline cursor-pointer px-3.75 w-full hover:bg-foreground duration-300 hover:text-background h-full flex items-center justify-center"
+            class="font-mono hover:underline cursor-pointer px-3.75 w-full hover:bg-foreground/60 hover:text-background duration-300 h-full flex items-center justify-center"
           >
             home
           </a>
@@ -28,7 +28,7 @@
         <div class="flex items-center h-14 border-x">
           <a
             href={resolve("/key")}
-            class="font-mono hover:underline cursor-pointer px-4 hover:bg-foreground duration-300 hover:text-background h-full flex items-center justify-center"
+            class="font-mono hover:underline cursor-pointer px-4 hover:bg-foreground/60 hover:text-background duration-300 h-full flex items-center justify-center"
           >
             key
           </a>
@@ -36,7 +36,7 @@
         <div class="flex items-center h-14 border-r">
           <a
             href="https://github.com/iRazvan2745"
-            class="font-mono hover:underline cursor-pointer px-4 hover:bg-foreground duration-300 hover:text-background h-full flex items-center justify-center"
+            class="font-mono hover:underline cursor-pointer px-4 hover:bg-foreground/60 hover:text-background duration-300 h-full flex items-center justify-center"
           >
             github
           </a>
@@ -44,12 +44,12 @@
         <div class="flex items-center h-14">
           <a
             href="mailto:contact@irazz.lol"
-            class="font-mono hover:underline cursor-pointer px-4 hover:bg-foreground duration-300 hover:text-background h-full flex items-center justify-center border-r -mr-0.5"
+            class="font-mono hover:underline cursor-pointer px-4 hover:bg-foreground/60 hover:text-background duration-300 h-full flex items-center justify-center border-r -mr-0.5"
           >
             contact
           </a>
         </div>
-        <div class="w-[70px] h-14 select-none lg:block hidden">
+        <div class="w-17.5 h-14 select-none lg:block hidden">
           <button onclick={() => toggleLocale()} class="flex items-center justify-center h-full w-full text-2xl">
             {getLocale() === "en" ? "🇷🇴" : "🇬🇧"}
           </button>

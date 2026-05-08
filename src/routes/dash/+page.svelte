@@ -15,7 +15,7 @@
                 tailwind
               </li>
               <li class="cursor-default rounded-sm pl-2 hover:bg-muted">
-                shadcn (heavily modified)
+                shadcn
               </li>
             </ul>
           </div>

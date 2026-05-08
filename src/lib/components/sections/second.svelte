@@ -56,7 +56,7 @@
       </div>
     </div>
 
-    <div class="h-screen w-260 -mr-23 border-x bg-background ">
+    <div class="h-screen w-260 -mr-23 border-x bg- ">
 
       <div class="sticky top-14 flex justify-end w-full right-0 bg-background">
         <span class="border-l px-2 font-mono border-b w-25 flex items-center justify-center">{m.active()}</span>
@@ -79,11 +79,11 @@
         </p>
       </div>
 
-      <div class="justify-center items-center h-[43.75vh] flex">
+      <div class="justify-center items-center h-[43.75vh] flex -space-x-px">
         <a
           href="https://uptimekit.dev"
           target="_blank"
-          class="p-4 gap-2 border flex items-center hover:bg-foreground hover:text-background hover:underline duration-300"
+          class="p-4 gap-2 border flex items-center hover:bg-foreground/60 hover:text-background hover:underline duration-300"
         >
           <Globe />
           <p class="text-lg">Website</p>
@@ -91,7 +91,7 @@
         <a
           href="https://github.com/uptimekit/uptimekit"
           target="_blank"
-          class="p-4 gap-2 border border-l-0 flex items-center hover:bg-foreground hover:text-background hover:underline duration-300"
+          class="p-4 gap-2 border flex items-center hover:bg-foreground/60 hover:text-background hover:underline duration-300"
         >
           <GitGraph />
           <p class="text-lg">Github</p>

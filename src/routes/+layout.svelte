@@ -3,6 +3,7 @@
 	import './layout.css';
 	import Lenis from 'lenis';
 	import Header from '$lib/components/sections/header.svelte';
+	import { asset } from '$app/paths';
 
 	let { children } = $props();
 
@@ -18,11 +19,13 @@
 </script>
 
 <svelte:head>
-	<link rel="icon" href={"/favicon.ico"} />
+	<link rel="icon" href={asset("/favicon.ico")} />
 	<link rel="stylesheet" href="https://unpkg.com/lenis@1.3.23/dist/lenis.css" />
 	<title>irazz.lol</title>
 </svelte:head>
 <div class="border-foreground bg-background h-svh">
-	<Header />
-	{@render children()}
+    <div class="z-99">
+        <Header />
+        {@render children()}
+    </div>
 </div>

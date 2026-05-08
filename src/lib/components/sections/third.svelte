@@ -84,7 +84,7 @@
         <a
           href={resolve("/dash")}
           target="_blank"
-          class="p-4 gap-2 border flex items-center hover:bg-foreground hover:text-background hover:underline duration-300"
+          class="p-4 gap-2 border flex items-center hover:bg-foreground/60 hover:text-background hover:underline duration-300"
         >
           <p class="text-lg">{m.bee_dashboard_available()}</p>
         </a>
