@@ -48,7 +48,7 @@
               </div>
               <div class="border-t">
                 <div class="ml-17.75 flex px-4 gap-4 justify-between">
-                    <h3>vreau sa incerc:</h3>
+                    <h3>{m.wanna_try}:</h3>
                     <div class="grid grid-cols-6 gap-3">
                         <Rust class="size-8 invert" />
                     </div>
